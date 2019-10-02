@@ -2,17 +2,17 @@ from itertools import product
 
 def findPassword(chars,function,show=50,format_="%s"):
     """
-    Essa função encontra e retorna uma senha e retorna o número de tentativas.
-    
-    Param chars: Dígitos que uma senha pode ter.
-    
-    Param function: Função que obrigatóriamente deve ter um parâmetro para
-    receber um senha. Caso o retorna dessa função seja True, a senha tentada
-    é considerada a correta.
+    This function finds and returns a password and returns the number of retries.
+    
+     Stop chars: Digits a password can have.
+    
+     Stop function: Function that must have a parameter to
+     receive a password. If the return of this function is True, the password attempted
+     is considered the correct one.
 
-    Param show: Mostra uma tentativa a cada X tentativas.
+     Stop show: Shows one attempt every X attempts.
 
-    Param format_: Formato em que a senha será impressa.
+     Stop format_: Format in which the password will be printed.
     """
 
     password = None
@@ -22,16 +22,16 @@ def findPassword(chars,function,show=50,format_="%s"):
     
     while not stop:
 
-        # Obtém todas as combinações possíveis com os dígitos do parâmetro "chars".
+        # Gets all possible combinations with the digits of the "chars" parameter.
         for pw in product(chars,repeat=size):
             
             password = "".join(pw)
             
-            # Imprime a senha que será tentada.
+            # Print the password that will be tried.
             if attempts % show == 0:
                 print(format_%password)
 
-            # Verifica se a senha é a correta.
+            # Checks if the password is the correct one.
             if function(password):
                 stop = True
                 break
@@ -44,20 +44,19 @@ def findPassword(chars,function,show=50,format_="%s"):
 
 def getChars():
     """
-    Método para obter uma lista contendo todas as
-    letras do alfabeto e números.
+    This is the method for obtaining a list of all letters of the alphabet and all numbers.
     """
     chars = []
 
-    # Acrescenta à lista todas as letras maiúsculas
+    # This adds all capital letters to the list
     for id_ in range(ord("A"),ord("Z")+1):
         chars.append(chr(id_))
 
-    # Acrescenta à lista todas as letras minúsculas
+    # This adds lowercase letters
     for id_ in range(ord("a"),ord("z")+1):
         chars.append(chr(id_))
 
-    # Acrescenta à lista todos os números
+    # Adds all numbers to the list
     for number in range(10):
         chars.append(str(number))
         
@@ -65,36 +64,36 @@ def getChars():
 
 
 
-# Se este módulo não for importado, o programa será testado.
-# Para realizar o teste, o usuário deverá inserir uma senha para ser encontrada.
+# If this module was not imported, the program will be tested.
+# To perform the test, user must enter password to be found.
 
 if __name__ == "__main__":
 
     import datetime
     import time
     
-    # Pede ao usuário uma senha
+    # Prompts the user for a password
     pw = input("\n Type a password: ")
     print("\n")
 
     def testFunction(password):
         """
-        Função que será usada para fazer o teste.
-        Podemos pensar nela por exemplo como uma função
-        que tenta se conectar a um site utilizando a
-        senha passada no parâmetro "password".
+        This is the function that will be used to do the test.
+         We can think of it as a function
+         that tries to connect to a site using the
+         password passed in the "password" parameter.
         """
         global pw
         if password == pw:
             return True
         else: return False
 
-    # Obtém os dígitos que uma senha pode ter
+    # Gets the digits a password can have
     chars = getChars()
 
     t = time.process_time()
 
-    # Obtém a senha encontrada e o múmero de tentativas
+    # Get password found and number of retries
     password,attempts = findPassword(chars,testFunction,show=1000,format_=" Trying %s")
 
     t = datetime.timedelta(seconds=int(time.process_time()-t))
