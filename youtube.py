@@ -39,7 +39,4 @@ try:
     link = song['href']
     webbrowser.open('https://www.youtube.com' + link)
 except KeyError:
-    print("Can't find any song,check your network or try a new word")
-
-
-#hey i'm learning  git. 
+    print("Can't find any song,check your network or try a new word") 
