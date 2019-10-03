@@ -75,7 +75,3 @@ print('Card : ', card.card_no)
 print(card.first_check())
 print(card.checksum)
 print(card.validate())
-
-# 79927398713
-# 4388576018402626
-# 379354508162306
