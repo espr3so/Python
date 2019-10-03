@@ -1,6 +1,6 @@
 # Pong Game in Codeskulptor
 
-import simplegui
+import simpleguitk as simplegui
 import random
 
 WIDTH = 600
