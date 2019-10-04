@@ -21,7 +21,7 @@ seconds  = int(input("Seconds "))
 #Calculating the refreshrate from the user input
 refreshrate = minutes * 60 + seconds
 #Selecting Safari as the browser
-driver = webdriver.Safari()
+driver = webdriver.Chrome()
 
 if url.startswith("https://"):
    driver.get(url)
