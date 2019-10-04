@@ -1,20 +1,32 @@
 import random
 
-a = comGuess = random.randint(0,100)
+print("Welcome to Shwivl's Guessing Game!")
+a = random.randint(0,100)
 
 
 while True:
-	userGuess = int(input("Enter your guessed no. b/w 0-100:"))
-	if userGuess < comGuess:
-	    print("Guess Higher")
-	    comGuess = random.randint(a,100)
-	    a += 1
+  print("")
+  userGuess = int(input("Enter your guessed no. b/w 0-100: "))
+  if userGuess < a:
+    print("")
+    print("Higher")
 
-	elif userGuess > comGuess:
-	    print("Guess Lower")
-	    comGuess = random.randint(0,a)
-	    a += 1
+  elif userGuess > a:
+    print("")
+    print("Lower")
 
-	else :
-	    print ("Guessed Corectly")
-	    break
+  else:
+    print("")
+    print("You guessed correctly!")
+    print(" ")
+    print('Would you like to play again? Type "y" or "n."')
+    playagain = str(input(''))
+    print(" ")
+    if playagain == str('y'):
+      continue
+    elif playagain == str('n'):
+      break
+    else:
+      print("Invalid input. Assuming n, closing program.\n")
+      break
+
